@@ -46,7 +46,7 @@ void Game::Run()
 {
 	if (!bIsGameOver) {
 
-		//create an input class to create input
+		//create an input class to detect input
 		GameInput = new Input();
 
 		ShaderPtr TextureShader = Graphics->CreateShader({
@@ -62,8 +62,8 @@ void Game::Run()
 		Poly2 = Graphics->CreateSimpleMeshShape(GeometricShapes::Cube, TextureShader, { TTech });
 
 
-		Poly->Transform.Location = Vector3(0.0f, 0.0f, 0.0f);
-		Poly2->Transform.Location = Vector3(0.0f, 0.0f, 0.0f);
+		Poly->Transform.Location = Vector3(5.0f, 0.0f, 5.0f);
+		Poly2->Transform.Location = Vector3(5.0f, 0.0f, -5.0f);
 	}
 
 	while (!bIsGameOver) {

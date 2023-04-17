@@ -8,14 +8,15 @@ Input::Input()
 {
 	//assign the current keys by default
 	KeyBoardState = SDL_GetKeyboardState(NULL);
-	MouseXDelta = MouseYDelta = 0;
+	/*MouseXDelta = MouseYDelta = 0;*/
 	ScrollDelta = 0;
 	MouseX = MouseY = 0;
 }
 
 void Input::ProcessInput()
 {
-	
+	//reset the delta each frame
+	MouseXDelta = MouseYDelta = 0;
 
 	SDL_Event PollEvent;
 
@@ -25,10 +26,10 @@ void Input::ProcessInput()
 		switch (PollEvent.type) {
 		case SDL_MOUSEBUTTONDOWN:
 			//PollEvent.button.button gets the index of the mouse button pressed
-			SetMouseButtonState(PollEvent.button.button, true);
+			SetMouseButtonState(PollEvent.button.button, false);
 			break;
 		case SDL_MOUSEBUTTONUP:
-			SetMouseButtonState(PollEvent.button.button, false);
+			SetMouseButtonState(PollEvent.button.button, true);
 			break;
 		case SDL_MOUSEMOTION:
 			OnMouseMove(PollEvent.motion);
